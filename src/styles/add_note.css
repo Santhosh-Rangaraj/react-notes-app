@@ -1,0 +1,43 @@
+
+.add-note-container{
+    border: 1px solid  #E5E7EB;
+    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-note-container h3{
+    font-size: 1.5rem;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+}
+.note-form input{
+    padding: 1.25rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid rgb(93, 93, 93);
+    margin: 0.5rem 0;
+    color: #1F2937;
+    width: 100%;
+}
+
+.note-form textarea{
+    border: 1px solid gray;
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    padding: 1.25rem 1rem;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.note-form button{
+    padding: 1rem;
+    background-color: #4F46E5;
+    color: white;
+    font-family: inherit;
+    border-radius: 5px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    font-size: 1.25rem;
+    width: 100%;
+
+}

@@ -1,22 +1,21 @@
-import react from 'react';
+import react from "react";
+import "../styles/add_note.css";
 
-const AddNote=()=>{
-
-    return(
+const AddNote = () => {
+  return (
+    <div className="add-note-container">
+      <h3>Add Note</h3>
+      <form className="note-form">
         <div>
-            <h1>Add Note</h1>
-            <p>This is the Add Note page.</p>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" />
-            </div>
-             <div>
-                <label htmlFor="content">Content:</label>
-                <textarea id="content" name="content" />
-            </div>
-                <button type="submit">Add Note</button>
+          <input type="text" id="title" name="title"  placeholder="Note Title"/>
         </div>
-    )
-}
+        <div>
+          <textarea id="content" name="content"  placeholder="Write your note here..." rows={12}/>
+        </div>
+        <button type="submit">Add Note</button>
+      </form>
+    </div>
+  );
+};
 
 export default AddNote;
