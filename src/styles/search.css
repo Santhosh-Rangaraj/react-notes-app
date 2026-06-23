@@ -1,0 +1,21 @@
+.search-container{
+border: 3px solid  #E5E7EB;
+padding: 1rem;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-container h3{
+    font-size: 1.5rem;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+}
+
+.search-container input{
+    padding: 1rem ;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid rgb(93, 93, 93);
+    margin: 0.5rem 0.5rem;
+    color: #1F2937;
+    width: 100%;
+}

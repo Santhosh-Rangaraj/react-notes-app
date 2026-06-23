@@ -1,20 +1,21 @@
 import "./App.css";
 import NotepadHeader from "./Components/Notepad_header";
 import AddNote from "./Components/AddNote";
-import Search from "./Components/Search";
+import Footer from './/Components/Footer'
+import NotesSection from "./Components/NotesSection";
+
 
 function App() {
   return (
     <>
           <NotepadHeader />  
           <main>
-            <section>
+            <section className="main-container">
             <AddNote />
-            </section>
-            <section>
-            <Search />
+            <NotesSection />
             </section>
           </main>
+          <Footer/>
     </>
   );
 }

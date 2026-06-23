@@ -39,5 +39,6 @@
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     font-size: 1.25rem;
     width: 100%;
-
+    font-weight: 500;
+    margin-bottom: 2.5rem;
 }

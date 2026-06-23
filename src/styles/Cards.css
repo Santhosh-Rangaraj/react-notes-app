@@ -1,0 +1,30 @@
+.cards-container{
+    border: 3px solid  #E5E7EB;
+    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 180px;
+    
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.cards-container h4{
+    font-size: 1rem;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+}
+
+.card-description{
+    color: #1F2937;
+}
+
+.delete-icon{
+    color: red;
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
