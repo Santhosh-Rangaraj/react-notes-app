@@ -5,7 +5,7 @@ import Footer from './/Components/Footer'
 import NotesSection from "./Components/NotesSection";
 import { useState } from "react";
 
-type Note = {
+export type Note = {
   id: string;
   title: string;
   content: string;
@@ -15,7 +15,6 @@ type Note = {
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
-  console.log('notes: ', notes);
 
   return (
     <div className="app-container">
@@ -23,7 +22,7 @@ function App() {
           <main>
             <section className="main-container">
             <AddNote onAddNote={(noteData) => setNotes([...notes, noteData])} />
-            <NotesSection />
+            <NotesSection notes={notes} />
             </section>
           </main>
           <Footer/>

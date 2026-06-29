@@ -42,3 +42,9 @@
     font-weight: 500;
     margin-bottom: 2.5rem;
 }
+
+.note-form button[disabled] {
+  background-color: gray;
+  pointer-events: none;
+  color: #484747;
+}
