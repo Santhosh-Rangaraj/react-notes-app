@@ -15,14 +15,25 @@ export type Note = {
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
+  console.log('notes: ', notes);
+
+  const handleDelete=(note:Note)=>{
+   const remainingNote= notes.filter((data)=>data.id !== note.id)
+    setNotes(remainingNote)
+  }
+
+  const handleSearch=(term:string)=>{
+    const filteredNotes=notes.filter((note)=>note.title.toLowerCase().includes(term))
+    filteredNotes.length===0?setNotes(notes):setNotes(filteredNotes)
+  }
 
   return (
     <div className="app-container">
           <NotepadHeader />  
           <main>
             <section className="main-container">
-            <AddNote onAddNote={(noteData) => setNotes([...notes, noteData])} />
-            <NotesSection notes={notes} />
+            <AddNote  onAddNote={(noteData) =>  setNotes(prevNotes => [...prevNotes, noteData])} />
+            <NotesSection onTyped={handleSearch} onClickedNote={handleDelete} notes={notes} />
             </section>
           </main>
           <Footer/>

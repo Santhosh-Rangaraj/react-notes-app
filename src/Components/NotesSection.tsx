@@ -9,12 +9,11 @@ import {type Note} from '../App'
 
 
 
-const NotesSection = ({notes}:{notes:Note[]}) => {
-    console.log('notes: ', notes);
+const NotesSection = ({notes,onClickedNote,onTyped}:{notes:Note[], onClickedNote:(note: Note) => void,onTyped:(value:string)=>void}) => {
     return (
         <div style={{flex:1}}>
-            <Search />
-            <NotesList notes={notes} />
+            <Search onTyped={onTyped} />
+            <NotesList onClickedNote={onClickedNote} notes={notes} />
             </div>
     );
 }   

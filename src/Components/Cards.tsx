@@ -5,11 +5,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {type Note} from '../App'
 
 
-const Cards = ({ note }: { note: Note}) => {
+const Cards = ({ note, onClickedNote }: { note: Note, onClickedNote: (note: Note) => void }) => {
 
 const handleDelete = () => {
-    console.log('Delete note with id:', note.id);
-    // Implement the delete functionality here
+    onClickedNote(note);
   }
 
   return (
