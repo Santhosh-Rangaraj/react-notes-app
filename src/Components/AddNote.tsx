@@ -1,14 +1,15 @@
 import react from "react";
 import "../styles/add_note.css";
 import { useState } from "react";
+import type { Note } from "../App";
 
 interface AddNoteProps {
   onAddNote: (noteData: { id: string; title: string; content: string; date: string }) => void;
 }
 
-const AddNote = ({onAddNote}: AddNoteProps) => {
+const AddNote = ({onAddNote, editData}: AddNoteProps & { editData: Note | null }) => {
   const [title, setTitle] = react.useState("");
-  const [content, setContent] = react.useState("");
+  const [content, setContent] = react.useState('');
   const handleSubmit = (e:any) => {
     e.preventDefault();
     const today = new Date().toLocaleDateString();

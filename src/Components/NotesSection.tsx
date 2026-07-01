@@ -9,11 +9,11 @@ import {type Note} from '../App'
 
 
 
-const NotesSection = ({notes,onClickedNote,onTyped}:{notes:Note[], onClickedNote:(note: Note) => void,onTyped:(value:string)=>void}) => {
+const NotesSection = ({notes,onClickedNote,onTyped,onEditData}:{notes:Note[], onClickedNote:(note: Note) => void,onTyped:(value:string)=>void, onEditData: (note: Note) => void}) => {
     return (
         <div style={{flex:1}}>
             <Search onTyped={onTyped} />
-            <NotesList onClickedNote={onClickedNote} notes={notes} />
+            <NotesList onClickedNote={onClickedNote} onEditData={onEditData} notes={notes} />
             </div>
     );
 }   

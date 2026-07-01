@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {type Note} from '../App'
 
 
-const Cards = ({ note, onClickedNote }: { note: Note, onClickedNote: (note: Note) => void }) => {
+const Cards = ({ note, onClickedNote,onEditData }: { note: Note, onClickedNote: (note: Note) => void, onEditData: (note: Note) => void }) => {
 
 const handleDelete = () => {
     onClickedNote(note);
@@ -20,7 +20,7 @@ const handleDelete = () => {
     <div className="card-footer">
         <p>{note.date}</p>
         <div>
-        <ModeEditIcon className="edit-icon"></ModeEditIcon>
+        <ModeEditIcon className="edit-icon" onClick={() => onEditData(note)}></ModeEditIcon>
         <DeleteIcon className="delete-icon" onClick={handleDelete} ></DeleteIcon>
         </div>
     </div>
