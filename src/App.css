@@ -1,5 +1,5 @@
 *{
-    background-color:#F8FAFC;
+    /* background-color:#F8FAFC; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,4 +15,6 @@
 }
 main{
     flex: 1;
+  background-color:#F8FAFC; 
+
 }

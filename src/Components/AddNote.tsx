@@ -2,6 +2,7 @@ import react, { useEffect } from "react";
 import "../styles/add_note.css";
 import { useState } from "react";
 import type { Note } from "../App";
+import AddIcon from '@mui/icons-material/Add';
 
 interface AddNoteProps {
   onAddNote: (noteData: { id: string; title: string; content: string; date: string }) => void;
@@ -71,7 +72,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
           />
         </div>
         <button disabled={title.trim() === "" || content.trim() === ""} type="submit">
-          {editData ? "Update Note" : "Add Note"}
+      <AddIcon></AddIcon> {editData ? "Update Note" : "Add Note"} 
         </button>
       </form>
     </div>
