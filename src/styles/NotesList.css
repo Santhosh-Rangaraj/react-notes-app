@@ -4,15 +4,60 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.notes-list-container h3{
-    font-size: 1.5rem;
-    color: #4F46E5;
-    margin: 0 1rem;
-}
 
 .notes-list{
     display: flex;
     gap: 15px;
     justify-content:space-between;
     flex-wrap: wrap;
+}
+
+.notes-list-header{
+    display: flex;
+    align-items: center;
+}
+.notes-list-header h3{
+    font-size: 1.5rem;
+    /* color: #4F46E5; */
+    margin-right: 0.5rem;
+}
+.notes-list-header p{
+    color:#4F46E5;
+    background-color: #cdd6f8;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.empty-notes-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: sans-serif;
+    padding: 1.5rem 0;
+    margin: 2rem 0;
+    border-radius:12px;
+    background:#fff;
+}
+
+
+.empty-notes-icon{
+    font-size: 6rem !important;
+    color: #6059ef;
+    font-weight: 100 !important;
+    opacity:.85;
+}
+
+.empty-notes-container h4{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-variant: small-caps;
+    padding: 0.25rem 0.5rem;
+}
+.empty-notes-container p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    color: #4e4d53;
 }
