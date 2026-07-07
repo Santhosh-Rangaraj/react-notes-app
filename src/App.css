@@ -18,3 +18,8 @@ main{
   background-color:#F8FAFC; 
 
 }
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+    border: 1px solid #e4e4e7;
+   }

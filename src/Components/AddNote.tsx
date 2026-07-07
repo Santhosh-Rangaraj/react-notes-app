@@ -72,7 +72,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
           />
         </div>
         <button disabled={title.trim() === "" || content.trim() === ""} type="submit">
-      <AddIcon></AddIcon> {editData ? "Update Note" : "Add Note"} 
+          <AddIcon /> {editData ? "Update Note" : "Add Note"}
         </button>
       </form>
     </div>

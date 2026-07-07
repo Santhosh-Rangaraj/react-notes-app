@@ -1,21 +1,62 @@
 .search-container{
-border: 1px solid  #E5E7EB;
+border:none;
 padding: 1rem;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: flex;
+justify-content: space-between;
+align-items:center;
+gap:1rem;
 }
 
-.search-container h3{
+/* .search-container h3{
     font-size: 1.5rem;
     color: #1F2937;
     margin-bottom: 0.5rem;
-}
+} */
+
 
 .search-container input{
     padding: 1rem ;
     font-size: 1.25rem;
     border-radius: 5px;
-    border: 1px solid rgb(93, 93, 93);
+    border: 1px solid #E5E7EB;
     margin: 0.5rem 0.5rem;
-    color: #1F2937;
-    width: 100%;
+    /* color: #1F2937; */
+    flex: 1;
+}
+
+.search-container button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    /* background-color: #4A46E3; */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+.search-container button:hover{
+    background-color: #2563EB;
+}
+
+.search-action{
+    display:flex;
+}
+
+.sort-control{
+    width:170px;
+}
+
+.sort-control .MuiOutlinedInput-root{
+    border-radius:4px;
+    font-size: 1rem;
+}
+
+.sort-control .MuiOutlinedInput-notchedOutline{
+   border: 1px solid #E5E7EB;
+}
+
+.sort-control .MuiSelect-select{
+    padding:1rem;
+    background-color: white;
 }

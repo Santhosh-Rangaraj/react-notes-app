@@ -7,21 +7,22 @@
 
 .add-note-container h3{
     font-size: 1.5rem;
-    color: #1F2937;
-    margin-bottom: 0.5rem;
+    color: #4F46E5;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
 }
 .note-form input{
     padding: 1.25rem 1rem;
     font-size: 1.25rem;
     border-radius: 5px;
-    border: 1px solid rgb(93, 93, 93);
+    border: 1px solid #E5E7EB;
     margin: 0.5rem 0;
     color: #1F2937;
     width: 100%;
 }
 
 .note-form textarea{
-    border: 1px solid gray;
+    border: 1px solid #E5E7EB;
     margin: 0.5rem 0;
     font-size: 1.25rem;
     padding: 1.25rem 1rem;
@@ -32,15 +33,19 @@
 
 .note-form button{
     padding: 1rem;
-    background-color: #4F46E5;
+    background: #4F46E5;
     color: white;
     font-family: inherit;
-    border-radius: 5px;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    border-radius: 7px;
+    /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     font-size: 1.25rem;
     width: 100%;
     font-weight: 500;
     margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .note-form button[disabled] {
