@@ -33,11 +33,11 @@
 
 .note-form button{
     padding: 1rem;
-    background: #4F46E5;
+    background: linear-gradient(90deg,  #034cc2 0%, #4F46E5 100%);
     color: white;
     font-family: inherit;
     border-radius: 7px;
-    /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     font-size: 1.25rem;
     width: 100%;
     font-weight: 500;
@@ -48,8 +48,8 @@
     gap: 0.5rem;
 }
 
-.note-form button[disabled] {
+/* .note-form button[disabled] {
   background-color: gray;
   pointer-events: none;
   color: #484747;
-}
+} */

@@ -3,6 +3,8 @@ import "../styles/add_note.css";
 import { useState } from "react";
 import type { Note } from "../App";
 import AddIcon from '@mui/icons-material/Add';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 interface AddNoteProps {
   onAddNote: (noteData: { id: string; title: string; content: string; date: string }) => void;
@@ -11,6 +13,7 @@ interface AddNoteProps {
 const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editData: Note | null; onUpdatedNote: (updatedNote: Note) => void }) => {
   const [title, setTitle] = react.useState("");
   const [content, setContent] = react.useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
     if (editData) {
@@ -30,6 +33,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
         date: today,
       };
       onUpdatedNote(updatedNote);
+      setOpenSnackbar(true);
       setTitle("");
       setContent("");
     } else {
@@ -42,6 +46,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
       onAddNote(noteData);
       setTitle("");
       setContent("");
+      setOpenSnackbar(true);
     }
   };
 
@@ -75,6 +80,16 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
           <AddIcon /> {editData ? "Update Note" : "Add Note"}
         </button>
       </form>
+  <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)}>
+  <Alert
+    onClose={() => setOpenSnackbar(false)}
+    severity="success"
+    variant="filled"
+    sx={{ width: '100%' }}
+  >
+    Note {editData ? "updated" : "added"} successfully!
+  </Alert>
+</Snackbar>
     </div>
   );
 };
