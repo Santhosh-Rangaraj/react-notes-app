@@ -80,7 +80,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
           <AddIcon /> {editData ? "Update Note" : "Add Note"}
         </button>
       </form>
-  <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)}>
+  <Snackbar open={openSnackbar} autoHideDuration={2000} onClose={() => setOpenSnackbar(false)}>
   <Alert
     onClose={() => setOpenSnackbar(false)}
     severity="success"
