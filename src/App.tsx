@@ -10,6 +10,8 @@ export type Note = {
   title: string;
   content: string;
   date: string;
+  category:string;
+  pinNote:boolean
 };
 
 function App() {

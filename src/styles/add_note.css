@@ -8,7 +8,7 @@
 .add-note-container h3{
     font-size: 1.5rem;
     color: #4F46E5;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     padding: 0.5rem 0;
 }
 .note-form input{
@@ -57,3 +57,44 @@
   pointer-events: none;
   color: #484747;
 } */
+
+.category-control{
+    width:100%;
+}
+
+.category-control .MuiOutlinedInput-root{
+    border-radius:4px;
+    font-size:1rem;
+}
+
+.category-control .MuiOutlinedInput-notchedOutline{
+   border: 1px solid #E5E7EB;
+}
+
+.category-control .MuiSelect-select{
+    padding:1rem;
+    background-color: white;
+    /* margin-bottom: 0.5rem; */
+    color: #707378;
+
+}
+.pin-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+.pin-container input[type="checkbox"]{
+   width: 19px;
+   height: 15px;
+}
+.pin-container span{
+    font-size: 1.25rem;
+    color: #6d6f73;
+    margin-left: 0.25rem;
+}
+.pin-icon{
+    color: #4F46E5;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}

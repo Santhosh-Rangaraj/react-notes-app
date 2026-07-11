@@ -22,9 +22,11 @@ const Search = ({onTyped}:{onTyped:(value:string)=>void}) => {
           label="Age"
         >
           <MenuItem value={10}>All Notes</MenuItem>
+          <MenuItem value={20}>Most Recent</MenuItem>
+          <MenuItem value={30}>Oldest</MenuItem>
         </Select>
       </FormControl>
-      <button><FilterAltIcon /></button>
+      <button style={{display:"flex", alignItems:"center"}}><FilterAltIcon />Filter</button>
 
       </div>
     </div>
