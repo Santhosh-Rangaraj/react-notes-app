@@ -118,7 +118,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
         <PushPinIcon className="pin-icon" />
         </div>
       </div>
-        <button disabled={title.trim() === "" || content.trim() === ""} type="submit">
+        <button disabled={title.trim() === "" || content.trim() === ""|| category.trim() === ""} type="submit">
           <AddIcon /> {editData ? "Update Note" : "Add Note"}
         </button>
       </form>

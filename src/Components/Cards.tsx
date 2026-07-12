@@ -20,16 +20,16 @@ const handleDelete = () => {
     <>
     <div className="cards-container">
     <div>
-    
-    <h4><span className="card-tag">🟣</span>{note.title}</h4>
+    <h4><span className="card-tag">{note.category === "Work" ? "🟣" : note.category === "Personal" ? "🟢" : note.category === "Ideas" ? "🟡" : note.category==="Others" ? "🔴" : ""}</span>{note.title}</h4>
     <p className="card-description">{note.content}</p>
     </div>  
+    <span className="card-category" style={{backgroundColor:note.category==="Work"?"#8494FF":note.category==="Personal"?"#468432":note.category==="Ideas"?"#FBBC05":note.category==="Others"?"#EA4335":"#CCCCCC"}}>{note.category}</span>
     <div className="card-footer">
         <p>{note.date}</p>
-        <div>
+    <div>
         <EditOutlinedIcon className="edit-icon" onClick={() => onEditData(note)}></EditOutlinedIcon>
         <DeleteOutlinedIcon className="delete-icon" onClick={() => setOpen(true)} ></DeleteOutlinedIcon>
-        </div>
+    </div>
     </div>
     </div>
     <Dialog open={open}  maxWidth="xs" fullWidth>
