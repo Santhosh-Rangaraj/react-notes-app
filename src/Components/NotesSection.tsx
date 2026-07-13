@@ -9,10 +9,10 @@ import {type Note} from '../App'
 
 
 
-const NotesSection = ({notes,onClickedNote,onTyped,onEditData}:{notes:Note[], onClickedNote:(note: Note) => void,onTyped:(value:string)=>void, onEditData: (note: Note) => void}) => {
+const NotesSection = ({notes,onClickedNote,onTyped,onEditData,onSortChanged,selectedSort}:{notes:Note[], onClickedNote:(note: Note) => void,onTyped:(value:string)=>void, onEditData: (note: Note) => void, onSortChanged: (value:string) => void, selectedSort:string}) => {
     return (
         <div style={{flex:1}}>
-            <Search onTyped={onTyped} />
+            <Search onTyped={onTyped} onSortChanged={onSortChanged} sortValue={selectedSort} />
             <NotesList onClickedNote={onClickedNote} onEditData={onEditData} notes={notes} />
             </div>
     );

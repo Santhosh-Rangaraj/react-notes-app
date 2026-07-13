@@ -19,7 +19,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category,setCategory]=useState('');
-  console.log('category: ', category);
+
   const [pinNote,setPinNote]=useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 

@@ -20,6 +20,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [showAddNote, setShowAddNote] = useState<boolean>(false);
+  const[selectedSort,setSelectedSort]=useState<string>('All Notes');
 
   useEffect(() => {
     // Load notes from localStorage on component mount
@@ -38,7 +39,18 @@ function App() {
   }, [notes]);
 
   // Filter notes based on the search term  {DERVIED STATE EXAMPLE...}
-  const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => {
+    if (selectedSort === "Newest First") {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    } else if (selectedSort === "Oldest First") {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    } else if (selectedSort === "Title (A–Z)") {
+      return a.title.localeCompare(b.title);
+    } else if (selectedSort === "Title (Z–A)") {
+      return b.title.localeCompare(a.title);
+    }
+    return 0;
+  });
 
   const handleDelete = (note: Note) => {
     const remainingNote = notes.filter((data) => data.id !== note.id);
@@ -58,7 +70,9 @@ function App() {
         <section className="main-container">
           <AddNote onAddNote={(noteData) => setNotes((prevNotes) => [...prevNotes, noteData])} editData={editNote} onUpdatedNote={handleUpdate} />
           <NotesSection
+          selectedSort={selectedSort}
             onTyped={(term) => setSearchTerm(term)}
+            onSortChanged={(sort) => setSelectedSort(sort)}
             onClickedNote={handleDelete}
             onEditData={(note) => setEditNote(note)}
             notes={filteredNotes}

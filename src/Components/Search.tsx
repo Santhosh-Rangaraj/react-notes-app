@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/search.css";
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -8,7 +7,7 @@ import Select from '@mui/material/Select';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 
-const Search = ({onTyped}:{onTyped:(value:string)=>void}) => {
+const Search = ({onTyped,onSortChanged,sortValue}:{onTyped:(value:string)=>void,onSortChanged:(value:string)=>void,sortValue:string}) => {
   return (
     <div className="search-container">
       <input type="text" placeholder="Search notes..." onChange={(e)=>onTyped(e.target.value)} />
@@ -18,12 +17,15 @@ const Search = ({onTyped}:{onTyped:(value:string)=>void}) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={""}
+          value={sortValue}
           label="Age"
+          onChange={(e)=>onSortChanged(e.target.value)}
         >
-          <MenuItem value={10}>All Notes</MenuItem>
-          <MenuItem value={20}>Most Recent</MenuItem>
-          <MenuItem value={30}>Oldest</MenuItem>
+          <MenuItem value={"All Notes"}>All Notes</MenuItem>
+          <MenuItem value={"Newest First"}>Newest First</MenuItem>
+          <MenuItem value={"Oldest First"}>Oldest First</MenuItem>
+          <MenuItem value={"Title (A–Z)"}>Title (A–Z)</MenuItem>
+          <MenuItem value={"Title (Z–A)"}>Title (Z–A)</MenuItem>
         </Select>
       </FormControl>
       <button style={{display:"flex", alignItems:"center"}}><FilterAltIcon />Filter</button>
