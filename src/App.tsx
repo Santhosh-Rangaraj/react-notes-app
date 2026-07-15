@@ -21,6 +21,7 @@ function App() {
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [showAddNote, setShowAddNote] = useState<boolean>(false);
   const[selectedSort,setSelectedSort]=useState<string>('All Notes');
+  const[filterOption,setFilterOption]=useState<string>('All Notes');
 
   useEffect(() => {
     // Load notes from localStorage on component mount
