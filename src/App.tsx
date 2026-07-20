@@ -21,7 +21,8 @@ function App() {
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [showAddNote, setShowAddNote] = useState<boolean>(false);
   const[selectedSort,setSelectedSort]=useState<string>('All Notes');
-  const[filterOption,setFilterOption]=useState<string>('All Notes');
+  const[filterOption,setFilterOption]=useState({  show: "All Notes",categories: [] as string[]});
+ 
 
   useEffect(() => {
     // Load notes from localStorage on component mount
@@ -71,6 +72,8 @@ function App() {
         <section className="main-container">
           <AddNote onAddNote={(noteData) => setNotes((prevNotes) => [...prevNotes, noteData])} editData={editNote} onUpdatedNote={handleUpdate} />
           <NotesSection
+          onFiltered={(filter)=>setFilterOption({show:filter,categories:filterOption.categories})}
+          filterValue={filterOption}
           selectedSort={selectedSort}
             onTyped={(term) => setSearchTerm(term)}
             onSortChanged={(sort) => setSelectedSort(sort)}

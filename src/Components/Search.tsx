@@ -21,10 +21,15 @@ const Search = ({
   onTyped,
   onSortChanged,
   sortValue,
+  filterValue,
+  onFiltered
 }: {
   onTyped: (value: string) => void;
   onSortChanged: (value: string) => void;
   sortValue: string;
+  // filterValue contains the current show filter and selected categories
+  filterValue: { show: string; categories: string[] };
+  onFiltered:(show:string,category:string[])=>void
 }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   return (
@@ -81,8 +86,9 @@ const Search = ({
     <FormControl>
       <FormLabel id={`show-label`}>Show</FormLabel>
       <RadioGroup
+        value={filterValue.show}
+        onChange={(e) => onFiltered(e.target.value as string, filterValue.categories)}
         aria-labelledby={`show-label`}
-        defaultValue="All Notes"
         name="radio-buttons-group"
       >
         <FormControlLabel value="All Notes" control={<Radio />} label="All Notes" />
@@ -94,10 +100,11 @@ const Search = ({
     <Divider />
     <FormLabel id={`category-label`}>Category</FormLabel>
     <FormGroup>
-  <FormControlLabel control={<Checkbox  />} label="Work" />
-  <FormControlLabel control={<Checkbox />} label="Personal" />
-  <FormControlLabel control={<Checkbox />} label="Important" />
-  <FormControlLabel control={<Checkbox />} label="Others" />
+  <FormControlLabel 
+checked={filterValue.categories.includes("Work")} control={<Checkbox  />} label="Work" />
+  <FormControlLabel checked={filterValue.categories.includes("Personal")}  control={<Checkbox />} label="Personal" />
+  <FormControlLabel checked={filterValue.categories.includes("Important")}  control={<Checkbox />} label="Important" />
+  <FormControlLabel checked={filterValue.categories.includes("Others")}  control={<Checkbox />} label="Others" />
 </FormGroup>
           </MenuList>
           <div  className="filter-actions">
