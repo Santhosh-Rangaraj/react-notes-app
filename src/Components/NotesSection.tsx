@@ -21,7 +21,7 @@ const NotesSection = ({
   onEditData: (note: Note) => void;
   onSortChanged: (value: string) => void;
   selectedSort: string;
-  onFiltered: (show: string, category: string[]) => void;
+ onFiltered: (filter: { show: string; categories: string[] }) => void;
   filterValue: { show: string; categories: string[] };
 }) => {
   return (

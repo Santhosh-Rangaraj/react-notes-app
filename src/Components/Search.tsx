@@ -15,23 +15,30 @@ import FormLabel from "@mui/material/FormLabel";
 import { Divider, Typography } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
-
+import { useEffect } from "react";
 
 const Search = ({
   onTyped,
   onSortChanged,
   sortValue,
   filterValue,
-  onFiltered
+  onFiltered,
 }: {
   onTyped: (value: string) => void;
   onSortChanged: (value: string) => void;
   sortValue: string;
   // filterValue contains the current show filter and selected categories
   filterValue: { show: string; categories: string[] };
-  onFiltered:(show:string,category:string[])=>void
+  onFiltered: (filter: { show: string; categories: string[] }) => void;
 }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [localFilter, setLocalFilter] = useState(filterValue);
+  console.log('localFilter: ', localFilter);
+
+useEffect(() => {
+  setLocalFilter(filterValue);
+}, [filterValue]);
+
   return (
     <div className="search-container">
       <input
@@ -68,51 +75,153 @@ const Search = ({
           open={Boolean(anchorEl)}
           onClose={() => setAnchorEl(null)}
           anchorOrigin={{
-    vertical: "bottom",
-    horizontal: "left",
-  }}
-    transformOrigin={{
-    vertical: "top",
-    horizontal: "left",
-  }}
-   slotProps={{
-    paper: {
-      className: "filter-paper",
-    }
-  }}
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+          slotProps={{
+            paper: {
+              className: "filter-paper",
+            },
+          }}
         >
           <Typography className="filter-title">Filter Notes</Typography>
-  <MenuList>
-    <FormControl>
-      <FormLabel id={`show-label`}>Show</FormLabel>
-      <RadioGroup
-        value={filterValue.show}
-        onChange={(e) => onFiltered(e.target.value as string, filterValue.categories)}
-        aria-labelledby={`show-label`}
-        name="radio-buttons-group"
-      >
-        <FormControlLabel value="All Notes" control={<Radio />} label="All Notes" />
-        <FormControlLabel value="Today" control={<Radio />} label="Today" />
-        <FormControlLabel value="This Week" control={<Radio />} label="This Week" />
-        <FormControlLabel value="This Month" control={<Radio />} label="This Month" />
-      </RadioGroup>
-    </FormControl>
-    <Divider />
-    <FormLabel id={`category-label`}>Category</FormLabel>
-    <FormGroup>
-  <FormControlLabel 
-checked={filterValue.categories.includes("Work")} control={<Checkbox  />} label="Work" />
-  <FormControlLabel checked={filterValue.categories.includes("Personal")}  control={<Checkbox />} label="Personal" />
-  <FormControlLabel checked={filterValue.categories.includes("Important")}  control={<Checkbox />} label="Important" />
-  <FormControlLabel checked={filterValue.categories.includes("Others")}  control={<Checkbox />} label="Others" />
-</FormGroup>
+          <MenuList>
+            <FormControl>
+              <FormLabel id={`show-label`}>Show</FormLabel>
+              <RadioGroup
+                value={localFilter.show}
+                onChange={(e) =>
+                  setLocalFilter({
+                    ...localFilter,
+                    show: e.target.value,
+                  })
+                }
+                aria-labelledby={`show-label`}
+                name="radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="All Notes"
+                  control={<Radio />}
+                  label="All Notes"
+                />
+                <FormControlLabel
+                  value="Today"
+                  control={<Radio />}
+                  label="Today"
+                />
+                <FormControlLabel
+                  value="This Week"
+                  control={<Radio />}
+                  label="This Week"
+                />
+                <FormControlLabel
+                  value="This Month"
+                  control={<Radio />}
+                  label="This Month"
+                />
+              </RadioGroup>
+            </FormControl>
+            <Divider />
+            <FormLabel id={`category-label`}>Category</FormLabel>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={localFilter.categories.includes("Work")}
+                    onChange={(e) =>
+                      setLocalFilter({
+                        ...localFilter,
+                        categories: e.target.checked
+                          ? [...localFilter.categories, "Work"]
+                          : localFilter.categories.filter(
+                              (category) => category !== "Work",
+                            ),
+                      })
+                    }
+                  />
+                }
+                label="Work"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={localFilter.categories.includes("Personal")}
+                    onChange={(e) =>
+                      setLocalFilter({
+                        ...localFilter,
+                        categories: e.target.checked
+                          ? [...localFilter.categories, "Personal"]
+                          : localFilter.categories.filter(
+                              (category) => category !== "Personal",
+                            ),
+                      })
+                    }
+                  />
+                }
+                label="Personal"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={localFilter.categories.includes("Important")}
+                    onChange={(e) =>
+                      setLocalFilter({
+                        ...localFilter,
+                        categories: e.target.checked
+                          ? [...localFilter.categories, "Important"]
+                          : localFilter.categories.filter(
+                              (category) => category !== "Important",
+                            ),
+                      })
+                    }
+                  />
+                }
+                label="Important"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={localFilter.categories.includes("Others")}
+                    onChange={(e) =>
+                      setLocalFilter({
+                        ...localFilter,
+                        categories: e.target.checked
+                          ? [...localFilter.categories, "Others"]
+                          : localFilter.categories.filter(
+                              (category) => category !== "Others",
+                            ),
+                      })
+                    }
+                  />
+                }
+                label="Others"
+              />
+            </FormGroup>
           </MenuList>
-          <div  className="filter-actions">
-            <button className="filter-button filter-action-cancel" onClick={() => setAnchorEl(null)} style={{margin: "10px"}}>Cancel</button>
-              <button className="filter-button filter-action-apply" onClick={() => setAnchorEl(null)} style={{margin: "10px"}}>Apply</button>
+          <div className="filter-actions">
+            <button
+              className="filter-button filter-action-cancel"
+              onClick={() => setAnchorEl(null)}
+              style={{ margin: "10px" }}
+            >
+              Cancel
+            </button>
+            <button
+              className="filter-button filter-action-apply"
+              onClick={() => {
+  onFiltered(localFilter);
+  setAnchorEl(null);
+}}
+              style={{ margin: "10px" }}
+            >
+              Apply
+            </button>
           </div>
         </Menu>
-        
       </div>
     </div>
   );

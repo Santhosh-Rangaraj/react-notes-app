@@ -21,7 +21,8 @@ function App() {
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [showAddNote, setShowAddNote] = useState<boolean>(false);
   const[selectedSort,setSelectedSort]=useState<string>('All Notes');
-  const[filterOption,setFilterOption]=useState({  show: "All Notes",categories: [] as string[]});
+  const[filterOption,setFilterOption]=useState({  show: "All Notes",categories: []});
+  console.log('filterOption: ', filterOption);
  
 
   useEffect(() => {
@@ -52,6 +53,19 @@ function App() {
       return b.title.localeCompare(a.title);
     }
     return 0;
+  }).filter((note)=>{
+    if (filterOption.show === "All Notes") {
+    return true;
+  }
+    if(filterOption.show==="Today"){
+      const noteDate = new Date(note.date);
+      const today = new Date();
+  return (
+  noteDate.getFullYear() === today.getFullYear() &&
+  noteDate.getMonth() === today.getMonth() &&
+  noteDate.getDate() === today.getDate()
+); }
+return true;
   });
 
   const handleDelete = (note: Note) => {
@@ -70,11 +84,19 @@ function App() {
       <NotepadHeader />
       <main>
         <section className="main-container">
-          <AddNote onAddNote={(noteData) => setNotes((prevNotes) => [...prevNotes, noteData])} editData={editNote} onUpdatedNote={handleUpdate} />
+          <AddNote
+            onAddNote={(noteData) =>
+              setNotes((prevNotes) => [...prevNotes, noteData])
+            }
+            editData={editNote}
+            onUpdatedNote={handleUpdate}
+          />
           <NotesSection
-          onFiltered={(filter)=>setFilterOption({show:filter,categories:filterOption.categories})}
-          filterValue={filterOption}
-          selectedSort={selectedSort}
+            onFiltered={(filter) => {
+              setFilterOption(filter);
+            }}
+            filterValue={filterOption}
+            selectedSort={selectedSort}
             onTyped={(term) => setSearchTerm(term)}
             onSortChanged={(sort) => setSelectedSort(sort)}
             onClickedNote={handleDelete}
