@@ -33,7 +33,6 @@ const Search = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [localFilter, setLocalFilter] = useState(filterValue);
-  console.log('localFilter: ', localFilter);
 
 useEffect(() => {
   setLocalFilter(filterValue);
@@ -205,7 +204,10 @@ useEffect(() => {
           <div className="filter-actions">
             <button
               className="filter-button filter-action-cancel"
-              onClick={() => setAnchorEl(null)}
+              onClick={() => {
+                setAnchorEl(null);
+                setLocalFilter({ show: 'All Notes', categories: [] });
+              }}
               style={{ margin: "10px" }}
             >
               Cancel
@@ -213,9 +215,9 @@ useEffect(() => {
             <button
               className="filter-button filter-action-apply"
               onClick={() => {
-  onFiltered(localFilter);
-  setAnchorEl(null);
-}}
+                onFiltered(localFilter);
+                setAnchorEl(null);
+              }}
               style={{ margin: "10px" }}
             >
               Apply

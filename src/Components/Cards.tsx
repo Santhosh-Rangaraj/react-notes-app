@@ -25,7 +25,7 @@ const handleDelete = () => {
     </div>  
     <span className="card-category" style={{backgroundColor:note.category==="Work"?"#8494FF":note.category==="Personal"?"#468432":note.category==="Ideas"?"#FBBC05":note.category==="Others"?"#EA4335":"#CCCCCC"}}>{note.category}</span>
     <div className="card-footer">
-        <p>{note.date}</p>
+        <p>{new Date(note.date).toLocaleDateString()}</p>
     <div>
         <EditOutlinedIcon className="edit-icon" onClick={() => onEditData(note)}></EditOutlinedIcon>
         <DeleteOutlinedIcon className="delete-icon" onClick={() => setOpen(true)} ></DeleteOutlinedIcon>

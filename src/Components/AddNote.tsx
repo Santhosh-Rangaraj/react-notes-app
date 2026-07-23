@@ -34,7 +34,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const today = new Date().toLocaleDateString();
+    const today = new Date().toISOString();
     if (editData) {
       const updatedNote: Note = {
         id: editData.id,
