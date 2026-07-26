@@ -23,9 +23,11 @@ function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [selectedSort, setSelectedSort] = useState<string>("All Notes");
-  const [filterOption, setFilterOption] = useState({ show: "All Notes", categories: [] });
+  const [filterOption, setFilterOption] = useState({
+    show: "All Notes",
+    categories: [],
+  });
 
- 
   useEffect(() => {
     // Save notes to localStorage whenever they change
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -33,10 +35,15 @@ function App() {
 
   // Filter notes based on the search term  {DERVIED STATE EXAMPLE...}
   const filteredNotes = notes
+    .sort((a, b) => b.pinNote - a.pinNote)
     .filter((note) =>
       note.title.toLowerCase().includes(searchTerm.toLowerCase()),
     )
     .sort((a, b) => {
+      if(b.pinNote-a.pinNote){
+        return b.pinNote-a.pinNote
+      }
+      else{
       if (selectedSort === "Newest First") {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       } else if (selectedSort === "Oldest First") {
@@ -47,6 +54,7 @@ function App() {
         return b.title.localeCompare(a.title);
       }
       return 0;
+    }
     })
     .filter((note) => {
       if (filterOption.show === "All Notes") {
@@ -104,7 +112,13 @@ function App() {
       <NotepadHeader />
       <main>
         <section className="main-container">
-          <AddNote onAddNote={(noteData) => setNotes((prevNotes) => [...prevNotes, noteData])} editData={editNote} onUpdatedNote={handleUpdate} />
+          <AddNote
+            onAddNote={(noteData) =>
+              setNotes((prevNotes) => [...prevNotes, noteData])
+            }
+            editData={editNote}
+            onUpdatedNote={handleUpdate}
+          />
           <NotesSection
             onFiltered={(filter) => {
               setFilterOption(filter);
