@@ -13,6 +13,22 @@
     flex-direction: column;
     min-height: 100vh;
 }
+.app-container.light {
+  background-color: #F8FAFC;
+  color: #1F2937;
+}
+
+.app-container.dark {
+  background-color: #111827;
+  color: #FFFFFF;
+}
+.app-container.light main {
+  background-color: #F8FAFC;
+}
+
+.app-container.dark main {
+  background-color: #111827;
+}
 main{
     flex: 1;
   background-color:#F8FAFC; 

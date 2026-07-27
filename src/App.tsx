@@ -4,6 +4,8 @@ import AddNote from "./Components/AddNote";
 import Footer from ".//Components/Footer";
 import NotesSection from "./Components/NotesSection";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "./Context/ThemeContext";
 
 export type Note = {
   id: string;
@@ -35,11 +37,11 @@ function App() {
 
   // Filter notes based on the search term  {DERVIED STATE EXAMPLE...}
   const filteredNotes = notes
-    .sort((a, b) => b.pinNote - a.pinNote)
+    .sort((a:any, b:any) => b.pinNote - a.pinNote)
     .filter((note) =>
       note.title.toLowerCase().includes(searchTerm.toLowerCase()),
     )
-    .sort((a, b) => {
+    .sort((a:any, b:any) => {
       if(b.pinNote-a.pinNote){
         return b.pinNote-a.pinNote
       }
@@ -107,11 +109,19 @@ function App() {
     setEditNote(null); // Clear the edit state after updating
   };
 
+   const context = useContext(ThemeContext);
+  
+  if (!context) {
+    throw new Error("ThemeContext must be used inside ThemeProvider");
+  }
+  
+  const { theme } = context;
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${theme}`}>
       <NotepadHeader />
       <main>
-        <section className="main-container">
+        <section className={`main-container`}>
           <AddNote
             onAddNote={(noteData) =>
               setNotes((prevNotes) => [...prevNotes, noteData])
@@ -120,7 +130,7 @@ function App() {
             onUpdatedNote={handleUpdate}
           />
           <NotesSection
-            onFiltered={(filter) => {
+            onFiltered={(filter:any) => {
               setFilterOption(filter);
             }}
             filterValue={filterOption}
