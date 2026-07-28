@@ -15,6 +15,8 @@ import {
 import { useState } from "react";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import PushPinIcon from "@mui/icons-material/PushPin";
+import { useContext } from "react";
+import { ThemeContext } from "../Context/ThemeContext";
 
 const Cards = ({
   note,
@@ -27,15 +29,23 @@ const Cards = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+     const context = useContext(ThemeContext);
+    
+    if (!context) {
+      throw new Error("ThemeContext must be used inside ThemeProvider");
+    }
+    
+    const { theme } = context;
+
   const handleDelete = () => {
     onClickedNote(note);
   };
   return (
     <>
       <div className="cards-container">
-        <div>
+        <div className={`theme-${theme}`}>
           <h4>
-           <div>
+           <div >
             <span className="card-tag">
               {note.category === "Work"
                 ? "🟣"
@@ -56,7 +66,7 @@ const Cards = ({
             )
 }
           </h4>
-          <p className="card-description">{note.content}</p>
+          <p className="card-description card-theme">{note.content}</p>
         </div>
 
         <span
@@ -64,11 +74,11 @@ const Cards = ({
           style={{
             backgroundColor:
               note.category === "Work"
-                ? "#8494FF"
+                ? "#581fea"
                 : note.category === "Personal"
                   ? "#468432"
                   : note.category === "Ideas"
-                    ? "#FBBC05"
+                    ? "#efb403"
                     : note.category === "Others"
                       ? "#EA4335"
                       : "#CCCCCC",

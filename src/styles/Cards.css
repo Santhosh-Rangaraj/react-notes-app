@@ -78,9 +78,15 @@
     font-size: 0.8rem;
     color: white;
     padding: 0.5rem 0.75rem;
-    border-radius: 40%;
+    border-radius: 50%;
     font-weight: 600;
 }
 .pin-card{
 color:rgb(154, 73, 235)
+}
+.theme-dark h4,.theme-dark p{
+    color: azure;
+}
+.cards-container{
+    border: 1px solid rgb(164, 164, 53);
 }
