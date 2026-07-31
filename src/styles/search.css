@@ -117,3 +117,17 @@ gap:1rem;
     font-weight: 600;
     padding: 0.25rem;
 }
+
+
+   @media (max-width:768px) {
+    .search-container{
+        flex-direction: column;
+        gap: 0;
+    }
+    .search-container input{
+      width: 100%;
+    }
+    .search-action .sort-control{
+        
+    }
+   }
