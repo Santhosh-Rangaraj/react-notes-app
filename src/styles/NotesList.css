@@ -63,5 +63,7 @@
 
 
  @media (max-width:768px) {
-  
+  .notes-list{
+    justify-content: center;
+  }
    }
