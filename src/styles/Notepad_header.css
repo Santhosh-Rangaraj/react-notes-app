@@ -9,7 +9,7 @@
 }
 
 .header-title{
-    padding: 1rem;
+    padding: 0.5rem;
     font-size: 2rem;
     display: flex;
     align-items: center;
@@ -31,8 +31,27 @@ font-size: 0.5rem;
     color: #FFFFFF;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: 2.5rem;
     cursor: pointer;
     font-size: 1rem;
     margin-right: 1rem;
+}
+.header.light {
+  background: linear-gradient(90deg,  #034cc2 0%, #4F46E5 100%);
+  color: black;
+}
+
+.header.dark {
+  background: #111827;
+  color: white;
+}
+
+.header.dark .header-button {
+  background: #374151;
+  color: white;
+}
+
+.header.light .header-button {
+  background: #4F46E5;
+  color: white;
 }

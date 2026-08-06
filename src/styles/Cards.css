@@ -28,6 +28,8 @@
     font-weight:700;
     color: #1F2937;
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .card-description{
@@ -61,6 +63,7 @@
 .card-footer p{
     color:grey;
     font-size: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .card-tag{
@@ -69,4 +72,21 @@
     border-radius: 50%;
    
     margin-right: 0.25rem;
+}
+.card-category{
+    width: fit-content;
+    font-size: 0.8rem;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 50%;
+    font-weight: 600;
+}
+.pin-card{
+color:rgb(154, 73, 235)
+}
+.theme-dark h4,.theme-dark p{
+    color: azure;
+}
+.cards-container{
+    border: 1px solid rgb(188, 188, 187);
 }

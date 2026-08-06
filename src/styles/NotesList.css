@@ -7,8 +7,6 @@
 
 .notes-list{
     display: flex;
-    gap: 15px;
-    justify-content:space-between;
     flex-wrap: wrap;
 }
 
@@ -62,3 +60,10 @@
     padding: 0.25rem 0.5rem;
     color: #4e4d53;
 }
+
+
+ @media (max-width:768px) {
+  .notes-list{
+    justify-content: center;
+  }
+   }

@@ -19,7 +19,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category,setCategory]=useState('');
-  console.log('category: ', category);
+
   const [pinNote,setPinNote]=useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -34,7 +34,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const today = new Date().toLocaleDateString();
+    const today = new Date().toISOString();
     if (editData) {
       const updatedNote: Note = {
         id: editData.id,
@@ -118,7 +118,7 @@ const AddNote = ({ onAddNote, editData, onUpdatedNote }: AddNoteProps & { editDa
         <PushPinIcon className="pin-icon" />
         </div>
       </div>
-        <button disabled={title.trim() === "" || content.trim() === ""} type="submit">
+        <button disabled={title.trim() === "" || content.trim() === ""|| category.trim() === ""} type="submit">
           <AddIcon /> {editData ? "Update Note" : "Add Note"}
         </button>
       </form>
