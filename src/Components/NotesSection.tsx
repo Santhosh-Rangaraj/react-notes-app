@@ -1,7 +1,7 @@
 import Search from "./Search";
 import NotesList from "./NotesList";
 import "../styles/NotesList.css";
-import "../styles/Search.css";
+import "../styles/search.css";
 import { type Note } from "../App";
 
 const NotesSection = ({
