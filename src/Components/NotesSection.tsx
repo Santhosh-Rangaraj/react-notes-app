@@ -1,4 +1,3 @@
-import React from "react";
 import Search from "./Search";
 import NotesList from "./NotesList";
 import "../styles/NotesList.css";
