@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Notepad_header.css";
 import DescriptionIcon from '@mui/icons-material/Description';
 import BedtimeIcon from '@mui/icons-material/Bedtime';

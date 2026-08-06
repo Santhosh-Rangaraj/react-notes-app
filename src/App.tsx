@@ -25,7 +25,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [editNote, setEditNote] = useState<Note | null>(null);
   const [selectedSort, setSelectedSort] = useState<string>("All Notes");
-  const [filterOption, setFilterOption] = useState({
+  const [filterOption, setFilterOption] = useState<{
+    show: string;
+    categories: string[];
+  }>({
     show: "All Notes",
     categories: [],
   });

@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/NotesList.css";
 import Cards from "./Cards";
 import {type Note} from '../App'

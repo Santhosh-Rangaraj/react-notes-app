@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import "../styles/add_note.css";
 import { useState } from "react";
 import type { Note } from "../App";
